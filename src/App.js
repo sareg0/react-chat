@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Form from './Form';
+import Message from './Message';
 
 const TOKEN = 'XM4jwxS3mvbU'
 const author = 'Sara'
@@ -20,23 +21,8 @@ function getAllMessages () {
     })
 }
 
-function getNewMessagesSince(lastMessage) {
-  fetch(`${messageRequest.url}&since=${lastMessage.timestamp}`)
-    .then((response) => {
-      if (response.ok) {
-        return response.json()
-      }
-      throw new Error('Could not retrieve messages')
-    })
-    .catch((error) => {
-      console.log('There was a problem with the network')
-      // TODO: something better than console.log ;)
-    })
-}
-
 function createMessage(text) {
   const message = { message: text, author: author }
-  console.log(message)
   return fetch(messageRequest, {
     method: 'POST',
     mode: 'cors',
@@ -49,7 +35,7 @@ function createMessage(text) {
     if (response.ok) {
       return response.json()
     }
-    // getNewMessagesSince(lastMessageTime)
+    throw new Error('Could not create message')
   })
   .catch((error) => {
     console.log(error)
@@ -87,10 +73,7 @@ class App extends Component {
       <div className="chat">
         <section className="messages">
           {this.state.messages.map((message) => (
-            <div className="message author" key={ message._id }>
-              <p>{ message.message }</p>
-              <p>{ message.timestamp }</p>
-            </div>
+            <Message text={ message.message } timestamp={ message.timestamp } key={ message._id } />
           ))}
         </section>
 
