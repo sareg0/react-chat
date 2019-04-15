@@ -1,33 +1,130 @@
-.App {
-  text-align: center;
+:root {
+  --light-yellow: #FCF8D4;
+  --light-gray: #dfe0e3;
+  --medium-gray: #848C94;
+  --dark-gray: #4d5159;
+  --blue: #B7DAF1;
+  --primary-button: #B11616;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+body {
+  color: #4d5159;
+  color: var(--dark-gray);
+  font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* functional classes start */
+.w-100 {
+  width: 100%;
+}
+
+.w-40 {
+  width: 40%;
+}
+
+.rounded-corner {
+  border-radius: 4px;
+}
+
+.p5 {
+  padding: 5px;
+}
+
+.ml5 {
+  margin-left: 5px;
+}
+
+.ta-r {
+  text-align: right;
+}
+
+.fcc {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+/* functional classes end */
+.chat {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.messages {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 100px;
+}
+
+.message {
+  border-radius: 4px;
+  max-width: 60%;
+  min-width: 20%;
+  padding: 10px;
+  margin: 10px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: #dfe0e3;
+  border-color: var(--light-gray);
+  background-color: white;
+}
+
+.message__text-small {
+  color: #848C94;
+  color: var(--medium-gray);
+  font-size: 1.25rem;
+  margin-top: 10px;
+}
+
+.author {
+  background-color:#FCF8D4;
+  background-color: var(--light-yellow);
+  align-self: flex-end;
+}
+
+.interlocutor {
+  align-self: flex-start;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  background-color: #B7DAF1;
+  background-color: var(--blue);
+  width: 100%;
+  padding: 10px;
+}
+
+.footer__form {
+  width: 100%;
+}
+
+.footer__text-input, .footer__button {
+  border: none;
+  height: 50px;
+}
+
+.footer__text-input  {
+  width: 80%;
+}
+
+.footer__button {
+  width: 20%;
+  background-color: var(--primary-button);
+  background-color:#B11616;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media (min-width: 600px) {
+  .footer__form, .messages {
+    width: 50%;
   }
-  to {
-    transform: rotate(360deg);
+  .footer__text-input {
+    width: 80%;
+  }
+  .message {
+    max-width: 60%;
   }
 }
